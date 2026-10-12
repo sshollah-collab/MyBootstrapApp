@@ -59,7 +59,12 @@ main {
     width: 100%;
     box-sizing: border-box;
 }
-
+/* About and Random Fact cards */
+.app-card {
+    width: 100%;
+    max-width: 500px;
+    box-sizing: border-box;
+}
 .card-body {
     min-width: 0;
 }
