@@ -54,7 +54,8 @@ factButton.addEventListener("click", function () {
         });
 });
 
-// Movie Search - External API
+```javascript
+// TV Show Search - TVmaze API
 
 const movieSearchForm = document.getElementById("movieSearchForm");
 const movieTitle = document.getElementById("movieTitle");
@@ -66,53 +67,74 @@ movieSearchForm.addEventListener("submit", function (event) {
     const searchTerm = movieTitle.value.trim();
 
     if (!searchTerm) {
-        movieResults.textContent = "Please enter a movie title.";
+        movieResults.textContent = "Please enter a TV show title.";
         return;
     }
 
-    movieResults.textContent = "Searching for movies...";
+    movieResults.textContent = "Searching for TV shows...";
 
     const apiUrl =
-        "https://freetestapi.com/api/v1/movies?search=" +
+        "https://api.tvmaze.com/search/shows?q=" +
         encodeURIComponent(searchTerm);
 
     fetch(apiUrl)
         .then(function (response) {
             if (!response.ok) {
-                throw new Error("Movie search failed");
+                throw new Error("TV show search failed");
             }
 
             return response.json();
         })
-        .then(function (movies) {
+        .then(function (results) {
             movieResults.replaceChildren();
 
-            if (!Array.isArray(movies) || movies.length === 0) {
-                movieResults.textContent = "No movies found. Try another title.";
+            if (!Array.isArray(results) || results.length === 0) {
+                movieResults.textContent =
+                    "No TV shows found. Try another title.";
                 return;
             }
 
-            movies.forEach(function (movie) {
-                const movieCard = document.createElement("div");
-                movieCard.className = "border rounded p-3 mb-3";
+            results.forEach(function (item) {
+                const show = item.show;
+                const card = document.createElement("div");
+                card.className = "border rounded p-3 mb-3";
 
                 const title = document.createElement("h3");
                 title.className = "h5";
-                title.textContent = movie.title || "Untitled movie";
+                title.textContent = show.name;
 
-                const year = document.createElement("p");
-                year.textContent = "Year: " + (movie.year || "Unknown");
+                const details = document.createElement("p");
+                details.textContent =
+                    "Language: " + (show.language || "Unknown") +
+                    " | Status: " + (show.status || "Unknown");
 
-                const genre = document.createElement("p");
-                genre.textContent = "Genre: " + (movie.genre || "Unknown");
+                card.append(title, details);
 
-                movieCard.append(title, year, genre);
-                movieResults.appendChild(movieCard);
+                if (show.image && show.image.medium) {
+                    const image = document.createElement("img");
+                    image.src = show.image.medium;
+                    image.alt = "Poster for " + show.name;
+                    image.className = "img-fluid mb-2";
+                    image.style.maxWidth = "150px";
+                    card.prepend(image);
+                }
+
+                if (show.url) {
+                    const link = document.createElement("a");
+                    link.href = show.url;
+                    link.target = "_blank";
+                    link.rel = "noopener noreferrer";
+                    link.textContent = "View show details on TVmaze";
+                    card.appendChild(link);
+                }
+
+                movieResults.appendChild(card);
             });
         })
         .catch(function (error) {
             movieResults.textContent =
-                "Sorry, movie search is unavailable. Please try again.";
+                "Sorry, TV show search is unavailable. Please try again.";
             console.error(error);
         });
 });
+```
