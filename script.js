@@ -1,6 +1,6 @@
+// Contact Form
 
 const form = document.getElementById("contactForm");
-form.addEventListener("submit", function (event) {
 const formMessage = document.getElementById("formMessage");
 
 form.addEventListener("submit", function (event) {
@@ -15,7 +15,6 @@ form.addEventListener("submit", function (event) {
         email + ".";
 
     formMessage.hidden = false;
-
     form.reset();
 });
 
@@ -135,6 +134,8 @@ movieSearchForm.addEventListener("submit", function (event) {
         .catch(function (error) {
             movieResults.textContent =
                 "Sorry, TV show search is unavailable. Please try again.";
+
             console.error(error);
         });
 });
+```
