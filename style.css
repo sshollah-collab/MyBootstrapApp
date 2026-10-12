@@ -47,12 +47,30 @@ textarea:focus-visible {
     }
 }
 
+
 /* Contact form card */
 .contact-card {
     width: 100%;
     max-width: 500px;
     box-sizing: border-box;
+    min-width: 0;
+    overflow-wrap: anywhere;
 }
+
+.contact-card .card-body {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+.contact-card input,
+.contact-card textarea,
+.contact-card button {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
 
 /* Keep content within narrow screens */
 main {
