@@ -1,20 +1,24 @@
 
-const form = document.querySelector("form");
+const form = document.getElementById("contactForm");
+const formMessage = document.getElementById("formMessage");
 
 form.addEventListener("submit", function (event) {
     event.preventDefault();
 
-    const name = document.getElementById("name").value;
-    const email = document.getElementById("email").value;
-    const message = document.getElementById("message").value;
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
 
-    alert(
+    formMessage.textContent =
         "Thank you, " + name +
-        "! Your message has been received. We will contact you at " + email + "."
-    );
+        "! Your message has been received. We will contact you at " +
+        email + ".";
+
+    formMessage.hidden = false;
 
     form.reset();
 });
+
+
 // Random Fact Generator - External API
 
 const factButton = document.getElementById("factButton");
@@ -23,6 +27,9 @@ const factResult = document.getElementById("factResult");
 factButton.addEventListener("click", function () {
     factButton.disabled = true;
     factButton.textContent = "Loading...";
+
+    factResult.hidden = false;
+    factResult.textContent = "Loading a random fact...";
 
     fetch("https://uselessfacts.jsph.pl/api/v2/facts/random?language=en")
         .then(function (response) {
@@ -34,12 +41,11 @@ factButton.addEventListener("click", function () {
         })
         .then(function (data) {
             factResult.textContent = data.text;
-            factResult.style.display = "block";
         })
         .catch(function (error) {
             factResult.textContent =
                 "Sorry, we could not load a fact. Please try again.";
-            factResult.style.display = "block";
+
             console.error(error);
         })
         .finally(function () {
