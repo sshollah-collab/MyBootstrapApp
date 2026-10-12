@@ -1,5 +1,6 @@
 
 const form = document.getElementById("contactForm");
+form.addEventListener("submit", function (event) {
 const formMessage = document.getElementById("formMessage");
 
 form.addEventListener("submit", function (event) {
