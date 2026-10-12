@@ -54,7 +54,6 @@ factButton.addEventListener("click", function () {
         });
 });
 
-```javascript
 // Movie Search - External API
 
 const movieSearchForm = document.getElementById("movieSearchForm");
@@ -117,4 +116,3 @@ movieSearchForm.addEventListener("submit", function (event) {
             console.error(error);
         });
 });
-```
