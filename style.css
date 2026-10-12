@@ -1,1 +1,66 @@
 
+/* General page styling */
+body {
+    background-color: #f8f9fa;
+    color: #212529;
+    font-family: Arial, sans-serif;
+}
+
+/* Main page heading */
+h1 {
+    color: #0d6efd;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+/* Introductory paragraph */
+.intro {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* Content cards */
+.card {
+    margin-bottom: 1.5rem;
+    border-radius: 10px;
+}
+
+/* Buttons */
+.btn {
+    margin-top: 0.5rem;
+}
+
+/* Visible keyboard focus */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid #212529;
+    outline-offset: 3px;
+}
+
+/* Larger screens */
+@media (min-width: 768px) {
+    main {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
+}
+
+/* Contact form card */
+.contact-card {
+    width: 100%;
+    max-width: 500px;
+    box-sizing: border-box;
+}
+
+/* Keep content within narrow screens */
+main {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.card-body {
+    min-width: 0;
+}
+
