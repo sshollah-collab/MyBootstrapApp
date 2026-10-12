@@ -54,7 +54,7 @@ factButton.addEventListener("click", function () {
         });
 });
 
-```javascript
+
 // TV Show Search - TVmaze API
 
 const movieSearchForm = document.getElementById("movieSearchForm");
