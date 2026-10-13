@@ -138,4 +138,4 @@ movieSearchForm.addEventListener("submit", function (event) {
             console.error(error);
         });
 });
-```
+
