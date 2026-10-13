@@ -87,3 +87,11 @@ main {
     min-width: 0;
 }
 
+```css
+/* Attribute selectors for form fields */
+input[type="email"],
+input[type="text"],
+textarea {
+    font-family: Arial, sans-serif;
+}
+```
